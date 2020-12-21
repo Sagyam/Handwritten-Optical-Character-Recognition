@@ -8,7 +8,7 @@ instance/*
 .webassets-cache
 
 #Saved checkpoints
-checkpoints/**
+app/models/checkpoint/**
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
