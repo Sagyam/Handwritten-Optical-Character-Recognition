@@ -8,7 +8,7 @@ class RegressionPredictor(object):
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, '__instance'):
             cls.__instance = super().__new__(cls)
-            cls.__model = load_model('app/models/regression.h5')
+            cls.__model = load_model('app/models/ANN.h5')
         return cls.__instance
 
     @staticmethod
@@ -27,7 +27,7 @@ class CNNPredictor(object):
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, '__instance'):
             cls.__instance = super().__new__(cls)
-            cls.__model = load_model('app/models/convolutional.h5')
+            cls.__model = load_model('app/models/LeNet.h5')
         return cls.__instance
 
     @staticmethod

@@ -14,10 +14,10 @@ if __name__ == '__main__':
         MaxPooling2D(pool_size=(2, 2)),
         Conv2D(filters=36, kernel_size=(5, 5), padding='same', activation='relu'),
         MaxPooling2D(pool_size=(2, 2)),
-        Dropout(0.25),
+        Dropout(0.2),
         Flatten(),
         Dense(128, activation='relu'),
-        Dropout(0.5),
+        Dropout(0.2),
         Dense(10, activation='softmax')
     ])
 
@@ -25,7 +25,7 @@ if __name__ == '__main__':
                   loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
                   metrics=['sparse_categorical_accuracy'])
 
-    checkpoint_save_path = 'checkpoint/convolutional.ckpt'
+    checkpoint_save_path = 'checkpoint/Lenet.ckpt'
     if os.path.exists(checkpoint_save_path + '.index'):
         model.load_weights(checkpoint_save_path)
 
@@ -35,12 +35,12 @@ if __name__ == '__main__':
 
     history = model.fit(x_train, y_train,
               batch_size=128,
-              epochs=5,
+              epochs=20,
               validation_data=(x_test, y_test),
               validation_freq=1,
-              callbacks=[cp_callback])
+            #   callbacks=[cp_callback])
 
-    model.save('convolutional.h5')
+    model.save('LeNet.h5')
 
     model.summary()
 

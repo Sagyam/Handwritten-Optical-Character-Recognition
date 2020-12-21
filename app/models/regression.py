@@ -29,9 +29,9 @@ if __name__ == '__main__':
               epochs=20,
               validation_data=(x_test, y_test),
               validation_freq=1,
-              callbacks=[cp_callback])
+            #   callbacks=[cp_callback])
 
-    model.save('regression.h5')
+    model.save('ANN.h5')
 
     model.summary()
 
