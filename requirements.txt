@@ -1,6 +1,4 @@
 # This file may be used to create an environment using:
-# $ conda create --name <env> --file <this file>
-# platform: win-64
 
 cudatoolkit=10.1.243
 cudnn=7.6.5=cuda10.1_0
