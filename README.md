@@ -1,4 +1,5 @@
 # Handwritten-Optical-Character-Recognition
+
 Handwritten Optical Charcater Recognition app built for Minor Project
 
 ## How to run?
