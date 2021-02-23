@@ -1,0 +1,173 @@
+body {
+	padding: 0 2rem;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: aliceblue;
+}
+
+h1 {
+	color: black;
+	display: inline-block;
+}
+
+hr {
+	width: 100%;
+	margin: 0, auto;
+	border: 0;
+	height: 1px;
+	box-shadow: 0px 0px 2px 2px #000;
+}
+
+#canvas {
+	display: block;
+	border-radius: 5px;
+	background: #ffffff;
+	border: solid 2px #000;
+	box-shadow: 0px 0px 5px 0px #000;
+}
+
+#picture {
+	display: block;
+	border-radius: 5px;
+	background: #ffffff;
+	border: solid 2px #000;
+	box-shadow: 0px 0px 5px 0px #000;
+}
+
+#reset {
+	box-shadow: 0px 0px 5px 0px #000;
+	background-color: #000;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 7px 46px;
+	text-decoration: none;
+	/* float: left; */
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#reset:hover {
+	background-color: #333;
+}
+
+#reset:active {
+	position: relative;
+	top: 1px;
+}
+
+.content {
+	width: 100%;
+	padding-top: 50px;
+}
+
+.content-left {
+	float: left;
+}
+
+.content-center {
+	float: left;
+	margin-left: 80px;
+}
+
+.content-right {
+	float: left;
+	margin-left: 80px;
+}
+
+#prediction {
+	font-size: 1.5rem;
+}
+
+.green {
+	color: green;
+}
+
+.yellow {
+	color: orange;
+}
+
+.red {
+	color: red;
+}
+
+.table-box {
+	display: inline-flex;
+	flex-wrap: nowrap;
+	gap: 100px;
+}
+
+table.result tr {
+	border-bottom: none;
+}
+
+table.result > tbody > tr:nth-child(odd) {
+	background-color: rgba(2, 2, 2, 0.157);
+}
+
+table.result > tbody > tr > td {
+	border-radius: 0;
+}
+
+table th,
+td {
+	border: none;
+	padding: 15px;
+	text-align: center;
+}
+
+.th-1 {
+	width: 50px;
+}
+
+.th-2 {
+	width: 250px;
+}
+
+.th-3 {
+	width: 250px;
+}
+
+table {
+	width: 100%;
+	display: table;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.answer {
+	font-size: 1.5rem;
+	font-weight: bolder;
+	color: red;
+}
+
+.github-corner:hover .octo-arm {
+	animation: octocat-wave 560ms ease-in-out;
+}
+@keyframes octocat-wave {
+	0%,
+	100% {
+		transform: rotate(0);
+	}
+	20%,
+	60% {
+		transform: rotate(-25deg);
+	}
+	40%,
+	80% {
+		transform: rotate(10deg);
+	}
+}
+@media (max-width: 500px) {
+	.github-corner:hover .octo-arm {
+		animation: none;
+	}
+	.github-corner .octo-arm {
+		animation: octocat-wave 560ms ease-in-out;
+	}
+}
