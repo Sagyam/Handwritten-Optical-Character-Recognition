@@ -82,7 +82,10 @@ function predict() {
 		"Multiplication Symbol",
 		"Subtraction Symbol",
 	];
+
+	pleaseWait();
 	const model = tf.loadLayersModel("tfjs_model/model.json");
+
 	model.then(
 		function (res) {
 			let image = tf.browser.fromPixels(canvas);
@@ -170,4 +173,9 @@ function writePrediction(label, confidence) {
 function removePrediction() {
 	let prediction = document.getElementById("prediction");
 	prediction.innerHTML = "";
+}
+
+function pleaseWait() {
+	let prediction = document.getElementById("prediction");
+	prediction.innerHTML = "Please Wait...";
 }
