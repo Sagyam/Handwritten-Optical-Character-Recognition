@@ -1,3 +1,5 @@
+const model_path = "./models/CNN-16-cats/model.json";
+const numChannels = 3;
 window.onload = () => {
 	const reset = document.getElementById("reset");
 	const canvas = document.getElementById("canvas");
@@ -49,8 +51,7 @@ window.onload = () => {
 	canvas.onmouseup = function (e) {
 		isDrawing = false;
 		const img = new Image();
-		img.src = canvas.toDataURL("image/jpeg", 1.0);
-
+		img.src = canvas.toDataURL();
 		img.onload = predict();
 	};
 
@@ -75,23 +76,22 @@ function predict() {
 		"7",
 		"8",
 		"9",
-		"Plus Symbol",
-		"Decimal Symbol",
-		"Division Symbol",
-		"Equals Symbol",
-		"Multiplication Symbol",
-		"Subtraction Symbol",
+		"add",
+		"dec",
+		"div",
+		"eq",
+		"mul",
+		"sub",
 	];
 
 	pleaseWait();
-	const model = tf.loadLayersModel("tfjs_model/model.json");
+	const model = tf.loadLayersModel(model_path);
 
 	model.then(
 		function (res) {
-			let image = tf.browser.fromPixels(canvas);
-			image = tf.image.resizeBilinear(image, (size = [100, 100]));
+			let image = tf.browser.fromPixels(canvas, numChannels);
+			image = tf.image.resizeBilinear(image, (size = [100, 100])); //resize to 100*100
 			image = image.expandDims(0);
-			//console.log(image);
 			const output = res.predict(image);
 			const probDist = tf.softmax(output);
 
@@ -101,7 +101,7 @@ function predict() {
 			[index, confidence] = getIndexAndConfidence(probArr);
 			confidence = Math.round(confidence * 100);
 			const label = className[index];
-			console.log(confidence, label);
+			console.log(confidence, index, label);
 			removePrediction();
 			writePrediction(label, confidence);
 		},
