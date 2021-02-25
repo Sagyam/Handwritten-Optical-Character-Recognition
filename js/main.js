@@ -6,8 +6,8 @@ window.onload = () => {
 	const ctx = canvas.getContext("2d");
 	const lineWidth = 15;
 	const lineColor = "#000000";
-	const canvasWidth = 20 * 20 + 1;
-	const canvasHeight = 20 * 20 + 1;
+	const canvasWidth = 400;
+	const canvasHeight = 400;
 
 	let isDrawing = false;
 	let curPos; // current position
