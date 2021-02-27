@@ -36,7 +36,6 @@ window.onload = () => {
 	canvas.width = canvasWidth;
 	canvas.height = canvasHeight;
 
-	/* Clear Canvas with white background*/
 	clear();
 	clearStack();
 
@@ -106,7 +105,6 @@ function predict() {
 			CONFIDENCE = Math.round(CONFIDENCE * 100);
 			LABEL = className[index];
 
-			//console.log(confidence, index, label);
 			removePrediction();
 			writePrediction(LABEL, CONFIDENCE);
 		},
@@ -179,14 +177,13 @@ function removePrediction() {
 
 function pleaseWait() {
 	let prediction = document.getElementById("prediction");
-	prediction.innerHTML = "Please Wait...";
+	prediction.innerHTML = "Downloading Model...";
 }
 
 function pushToStack() {
 	if (CONFIDENCE > CONF_THRESH) {
 		STACK.push(LABEL);
 		showStack();
-		//console.log(STACK);
 	}
 }
 
