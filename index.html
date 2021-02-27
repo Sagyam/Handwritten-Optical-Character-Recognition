@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Handwritten Calculator</title>
+		<title>Handwritten Digit Calculator</title>
 		<link rel="stylesheet" href="css/main.css" />
 		<link
 			rel="shortcut icon"
@@ -44,7 +44,7 @@
 					></path>
 				</svg>
 			</a>
-			<h1 class="header-title">Handwritten Calculator</h1>
+			<h1 class="header-title">Handwritten Digit Calculator</h1>
 			<hr />
 		</header>
 		<main>
@@ -79,10 +79,15 @@
 						Calculate
 					</button>
 				</div>
+				<div class="help">
+					<h1>Supported Characters and Operations</h1>
+					<table id="table"></table>
+				</div>
 			</div>
 		</main>
 	</body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.1.0/tf.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/calculator.js"></script>
+	<!-- <script type="text/javascript" src="js/help.js"></script> -->
 </html>
