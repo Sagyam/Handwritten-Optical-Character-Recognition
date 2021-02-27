@@ -1,5 +1,27 @@
 const model_path = "./models/CNN-16-cats/model.json";
 const numChannels = 3;
+let LABEL;
+let CONFIDENCE;
+let CONF_THRESH = 60;
+let STACK = [];
+className = [
+	"0",
+	"1",
+	"2",
+	"3",
+	"4",
+	"5",
+	"6",
+	"7",
+	"8",
+	"9",
+	"Plus",
+	"Decimal",
+	"Divison",
+	"Equals",
+	"Multiply",
+	"Subtract",
+];
 window.onload = () => {
 	const reset = document.getElementById("reset");
 	const canvas = document.getElementById("canvas");
@@ -16,6 +38,7 @@ window.onload = () => {
 
 	/* Clear Canvas with white background*/
 	clear();
+	clearStack();
 
 	function getPosition(clientX, clientY) {
 		let box = canvas.getBoundingClientRect();
@@ -65,25 +88,6 @@ window.onload = () => {
 };
 
 function predict() {
-	className = [
-		"0",
-		"1",
-		"2",
-		"3",
-		"4",
-		"5",
-		"6",
-		"7",
-		"8",
-		"9",
-		"add",
-		"dec",
-		"div",
-		"eq",
-		"mul",
-		"sub",
-	];
-
 	pleaseWait();
 	const model = tf.loadLayersModel(model_path);
 
@@ -97,13 +101,14 @@ function predict() {
 
 			let probArr = probDist.dataSync();
 
-			let index, confidence;
-			[index, confidence] = getIndexAndConfidence(probArr);
-			confidence = Math.round(confidence * 100);
-			const label = className[index];
-			console.log(confidence, index, label);
+			let index;
+			[index, CONFIDENCE] = getIndexAndConfidence(probArr);
+			CONFIDENCE = Math.round(CONFIDENCE * 100);
+			LABEL = className[index];
+
+			//console.log(confidence, index, label);
 			removePrediction();
-			writePrediction(label, confidence);
+			writePrediction(LABEL, CONFIDENCE);
 		},
 		function (err) {
 			console.log(err);
@@ -125,6 +130,7 @@ function getIndexAndConfidence(probArr) {
 
 function writePrediction(label, confidence) {
 	let prediction = document.getElementById("prediction");
+
 	if (confidence > 95) {
 		prediction.innerHTML =
 			"This is a " +
@@ -137,8 +143,7 @@ function writePrediction(label, confidence) {
 			"%" +
 			"</strong>" +
 			" confidence 😎";
-	}
-	if (confidence < 95 && confidence > 80) {
+	} else if (confidence < 95 && confidence > 80) {
 		prediction.innerHTML =
 			"This maybe " +
 			"<strong class='yellow'>" +
@@ -150,9 +155,7 @@ function writePrediction(label, confidence) {
 			"%" +
 			"</strong>" +
 			" confidence 🤔";
-	}
-
-	if (confidence < 80 && confidence > 60) {
+	} else if (confidence < 80 && confidence > CONF_THRESH) {
 		prediction.innerHTML =
 			"Umm, maybe it's " +
 			"<strong class='red'>" +
@@ -164,8 +167,7 @@ function writePrediction(label, confidence) {
 			"%" +
 			"</strong>" +
 			" confidence 😕";
-	}
-	if (confidence < 60) {
+	} else {
 		prediction.innerHTML = "I have no idea 😩";
 	}
 }
@@ -178,4 +180,32 @@ function removePrediction() {
 function pleaseWait() {
 	let prediction = document.getElementById("prediction");
 	prediction.innerHTML = "Please Wait...";
+}
+
+function pushToStack() {
+	if (CONFIDENCE > CONF_THRESH) {
+		STACK.push(LABEL);
+		showStack();
+		//console.log(STACK);
+	}
+}
+
+function clearStack() {
+	STACK = [];
+	stack = document.getElementById("stack");
+	stack.innerHTML = "";
+	ansBox = document.getElementById("answer");
+	ansBox.innerHTML = "";
+}
+
+function showStack() {
+	stack = document.getElementById("stack");
+	let text = "";
+	mappedArr = mapper(STACK);
+	for (let i = 0; i < mappedArr.length; i++) {
+		text += mappedArr[i];
+		text += " ";
+	}
+
+	stack.innerHTML = text;
 }

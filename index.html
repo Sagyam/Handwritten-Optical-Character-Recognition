@@ -44,25 +44,45 @@
 					></path>
 				</svg>
 			</a>
-			<h1>Handwritten Math Symbol Recognizer</h1>
+			<h1 class="header-title">Handwritten Math Symbol Recognizer</h1>
 			<hr />
 		</header>
 		<main>
-			<div class="content">
-				<div class="content-left">
-					<h2>Draw on canvas</h2>
+			<div class="flex-container">
+				<div class="canvas-div">
+					<h1>Draw on canvas</h1>
 					<canvas id="canvas"></canvas>
-					<button id="reset" onclick="clear()">Clear</button>
+					<button class="btn-danger" id="reset" onclick="clear()">
+						Clear Canvas
+					</button>
+					<button class="btn-success" id="push" onclick="pushToStack()">
+						Send
+					</button>
 				</div>
+				<div class="prediction-div">
+					<h1>Prediction</h1>
+					<p id="prediction"></p>
+				</div>
+				<div class="stack-div">
+					<h1>Calculator</h1>
+					<div class="display">
+						<p id="stack"></p>
+					</div>
+					<div class="answer-div">
+						<span id="answer"></span>
+					</div>
 
-				<div class="content-right">
-					<h2>Prediction</h2>
-
-					<div id="prediction"></div>
+					<button class="btn-danger" id="clearStack" onclick="clearStack()">
+						Clear All
+					</button>
+					<button class="btn-success" id="calc" onclick="calc()">
+						Calculate
+					</button>
 				</div>
 			</div>
 		</main>
 	</body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.1.0/tf.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/calculator.js"></script>
 </html>
