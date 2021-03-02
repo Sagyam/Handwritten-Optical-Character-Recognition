@@ -95,9 +95,9 @@ function predict() {
 			let image = tf.browser.fromPixels(canvas, numChannels);
 			image = tf.image.resizeBilinear(image, (size = [100, 100])); //resize to 100*100
 			image = image.expandDims(0);
-			const output = res.predict(image);
-			const probDist = tf.softmax(output);
-
+			//const output = res.predict(image);
+			//const probDist = tf.softmax(output);
+			let probDist = res.predict(image);
 			let probArr = probDist.dataSync();
 
 			let index;
