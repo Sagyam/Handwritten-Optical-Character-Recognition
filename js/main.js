@@ -1,4 +1,4 @@
-const model_path = "./models/CNN-16-cats/model.json";
+const model_path = "./models/new/model.json";
 const numChannels = 3;
 let LABEL;
 let CONFIDENCE;
