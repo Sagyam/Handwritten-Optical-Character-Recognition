@@ -1,5 +1,6 @@
-const model_path = "./models/new/model.json";
+const model_path = "./models/V2/model.json";
 const numChannels = 3;
+const numClasses = 16;
 let LABEL;
 let CONFIDENCE;
 let CONF_THRESH = 60;
@@ -95,8 +96,6 @@ function predict() {
 			let image = tf.browser.fromPixels(canvas, numChannels);
 			image = tf.image.resizeBilinear(image, (size = [100, 100])); //resize to 100*100
 			image = image.expandDims(0);
-			//const output = res.predict(image);
-			//const probDist = tf.softmax(output);
 			let probDist = res.predict(image);
 			let probArr = probDist.dataSync();
 
@@ -117,7 +116,7 @@ function predict() {
 function getIndexAndConfidence(probArr) {
 	let highest = probArr[0];
 	let index = 0;
-	for (let i = 0; i < 16; i++) {
+	for (let i = 0; i < numClasses; i++) {
 		if (probArr[i] > highest) {
 			highest = probArr[i];
 			index = i;
