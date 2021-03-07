@@ -3,7 +3,7 @@ const numChannels = 3;
 const numClasses = 16;
 let LABEL;
 let CONFIDENCE;
-let CONF_THRESH = 60;
+let CONF_THRESH = 0;
 let STACK = [];
 className = [
 	"0",
@@ -139,7 +139,7 @@ function writePrediction(label, confidence) {
 			confidence +
 			"%" +
 			"</strong>" +
-			" confidence 😎";
+			" confidence ";
 	} else if (confidence < 95 && confidence > 80) {
 		prediction.innerHTML =
 			"This maybe " +
@@ -151,7 +151,7 @@ function writePrediction(label, confidence) {
 			confidence +
 			"%" +
 			"</strong>" +
-			" confidence 🤔";
+			" confidence ";
 	} else if (confidence < 80 && confidence > CONF_THRESH) {
 		prediction.innerHTML =
 			"Umm, maybe it's " +
@@ -163,9 +163,9 @@ function writePrediction(label, confidence) {
 			confidence +
 			"%" +
 			"</strong>" +
-			" confidence 😕";
+			" confidence ";
 	} else {
-		prediction.innerHTML = "I have no idea 😩";
+		prediction.innerHTML = "I have no idea ";
 	}
 }
 
