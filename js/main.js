@@ -139,7 +139,7 @@ function writePrediction(label, confidence) {
 			confidence +
 			"%" +
 			"</strong>" +
-			" confidence ";
+			" confidence  😎";
 	} else if (confidence < 95 && confidence > 80) {
 		prediction.innerHTML =
 			"This maybe " +
@@ -151,8 +151,8 @@ function writePrediction(label, confidence) {
 			confidence +
 			"%" +
 			"</strong>" +
-			" confidence ";
-	} else if (confidence < 80 && confidence > CONF_THRESH) {
+			" confidence 🤔";
+	} else if (confidence < 60 && confidence > CONF_THRESH) {
 		prediction.innerHTML =
 			"Umm, maybe it's " +
 			"<strong class='red'>" +
@@ -163,9 +163,9 @@ function writePrediction(label, confidence) {
 			confidence +
 			"%" +
 			"</strong>" +
-			" confidence ";
+			" confidence 😕";
 	} else {
-		prediction.innerHTML = "I have no idea ";
+		prediction.innerHTML = "I have no idea 🤷";
 	}
 }
 
