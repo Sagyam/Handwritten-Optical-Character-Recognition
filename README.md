@@ -13,7 +13,7 @@
 
 ---
 
-![Demo](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Demo](https://raw.githubusercontent.com/Sagyam/Handwritten-Optical-Character-Recognition/main/img/hocr-demo.gif)
 Responsive web app that can recognize handwritten characters drawn on canvas and perform arithmetic calculation. inference is carried out on browser using TensorFlowJS.
 
 ## Supported Characters
