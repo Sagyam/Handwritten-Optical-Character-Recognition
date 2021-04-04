@@ -1,4 +1,4 @@
-# Handwritten-Optical-Character-Recognition
+# Handwritten Character Recognition Calculator
 
 [![GitHub license](https://img.shields.io/github/license/Sagyam/Handwritten-Optical-Character-Recognition?style=for-the-badge)](https://github.com/Sagyam/Handwritten-Optical-Character-Recognition)
 ![Website](https://img.shields.io/website?style=for-the-badge&url=http%3A%2F%2Fsagyamthapa.me%2FHandwritten-Optical-Character-Recognition%2F)
