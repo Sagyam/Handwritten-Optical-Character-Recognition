@@ -25,6 +25,7 @@ Responsive web app that can recognize handwritten characters drawn on canvas and
 - Multipication **X**
 - Division % **(Forward or Backward Slash not supported)**
 - Decimal **.**
+- Equals  **=**
 
 ## Links
 
