@@ -3,6 +3,7 @@ body {
 	margin-right: auto;
 	margin-left: auto;
 	background-color: aliceblue;
+	zoom: 100%;
 }
 
 h1 {
@@ -143,6 +144,10 @@ hr {
 
 .red {
 	color: #dc2626;
+}
+
+.help {
+	font-size: large;
 }
 
 .github-corner:hover .octo-arm {
