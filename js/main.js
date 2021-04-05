@@ -3,7 +3,7 @@ const numChannels = 3;
 const numClasses = 16;
 let LABEL;
 let CONFIDENCE;
-let CONF_THRESH = 0;
+let CONF_THRESH = 50;
 let STACK = [];
 className = [
 	"0",
@@ -196,7 +196,7 @@ function writePrediction(label, confidence) {
 			"%" +
 			"</strong>" +
 			" confidence 🤔";
-	} else if (confidence < 60 && confidence > CONF_THRESH) {
+	} else if (confidence < 80 && confidence > CONF_THRESH) {
 		prediction.innerHTML =
 			"Umm, maybe it's " +
 			"<strong class='red'>" +
