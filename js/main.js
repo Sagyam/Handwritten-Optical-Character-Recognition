@@ -1,10 +1,10 @@
-const model_path = "./models/V2/model.json";
+const model_path = "./models/mobilenet_v2/model.json";
 const numChannels = 3;
-const numClasses = 16;
 let LABEL;
 let CONFIDENCE;
-let CONF_THRESH = 50;
+let CONF_THRESH = 10;
 let STACK = [];
+
 className = [
 	"0",
 	"1",
@@ -16,13 +16,19 @@ className = [
 	"7",
 	"8",
 	"9",
-	"Plus",
+	"Add",
 	"Decimal",
-	"Divison",
+	"Division",
 	"Equals",
 	"Multiply",
-	"Subtract",
+	"Minus",
+	"X",
+	"Y",
+	"Z",
 ];
+
+const numClasses = 19;
+
 window.onload = () => {
 	const reset = document.getElementById("reset");
 	const canvas = document.getElementById("canvas");
@@ -133,13 +139,34 @@ window.onload = () => {
 
 function predict() {
 	pleaseWait();
+
+	class L2 {
+		static className = "L2";
+
+		constructor(config) {
+			return tf.regularizers.l1l2(config);
+		}
+	}
+	class L1 {
+		static className = "L1";
+
+		constructor(config) {
+			return tf.regularizers.l1l2(config);
+		}
+	}
+	tf.serialization.registerClass(L2);
+	tf.serialization.registerClass(L1);
+
 	const model = tf.loadLayersModel(model_path);
 
 	model.then(
 		function (res) {
 			let image = tf.browser.fromPixels(canvas, numChannels);
-			image = tf.image.resizeBilinear(image, (size = [100, 100])); //resize to 100*100
+			image = tf.image
+				.resizeBilinear(image, (size = [100, 100]))
+				.div(tf.scalar(255)); //resize to 100*100
 			image = image.expandDims(0);
+
 			let probDist = res.predict(image);
 			let probArr = probDist.dataSync();
 
