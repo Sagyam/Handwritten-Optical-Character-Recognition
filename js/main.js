@@ -1,4 +1,4 @@
-const model_path = "./models/mobilenet_v2/model.json";
+const model_path = "./models/Improved_MobileNet/model.json";
 const numChannels = 3;
 let LABEL;
 let CONFIDENCE;
