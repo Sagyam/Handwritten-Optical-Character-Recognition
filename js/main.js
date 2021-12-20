@@ -1,4 +1,4 @@
-const model_path = "./models/Improved_MobileNet/model.json";
+const model_path = "./models/V3/model.json";
 const numChannels = 3;
 let LABEL;
 let CONFIDENCE;
@@ -33,7 +33,7 @@ window.onload = () => {
 	const reset = document.getElementById("reset");
 	const canvas = document.getElementById("canvas");
 	const ctx = canvas.getContext("2d");
-	const lineWidth = 15;
+	const lineWidth = 10;
 	const lineColor = "#000000";
 	const canvasWidth = 400;
 	const canvasHeight = 400;
